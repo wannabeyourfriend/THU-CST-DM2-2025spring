@@ -46,7 +46,7 @@ def main():
     n, m = map(int, input().split())  # n个顶点,m条边
     
     # 初始化图 - 修改为从0开始的顶点编号
-    graph = {i: [] for i in range(n)}
+    graph = {i: [] for i in range(1, n+1 )}
     
     # 读取边
     for _ in range(m):
@@ -60,7 +60,9 @@ def main():
     if result is None:
         print("图中存在环,无法进行拓扑排序")
     else:
-        print(" ".join(map(str, result)))
+        # 将结果格式化为数学符号形式
+        path = " \\to ".join(f"v_{{{str(v)}}}" for v in result)
+        print(path)
 
 if __name__ == "__main__":
     main()
